@@ -13,7 +13,12 @@
    "source_image": "{{ user `source_image` }}",
    "zone": "europe-west1-b",
    "ssh_username": "appuser",
-   "machine_type": "{{ user `machine_type` }}"
+   "machine_type": "{{ user `machine_type` }}",
+   "image_description": "Image from packer",
+   "disk_size": "15",
+   "disk_type": "pd-ssd",
+   "network": "default",
+   "tags": "fun-with-templates"
    }
 
 ],
