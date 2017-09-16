@@ -1,0 +1,30 @@
+#!/bin/sh
+export PATH="$PATH:/home/appuser/.rvm/gems/ruby-2.4.1/bin:/home/appuser/.rvm/gems/ruby-2.4.1@global/bin:/home/appuser/.rvm/rubies/ruby-2.4.1/bin:/home/appuser/bin:/home/appuser/.local/bin:/home/appuser/.rvm/bin"
+export GEM_PATH="/home/appuser/.rvm/gems/ruby-2.4.1:/home/appuser/.rvm/gems/ruby-2.4.1@global"
+PUMA_WORK_DIR="/home/appuser/reddit/"
+PUMA_PID_FILE="/home/appuser/reddit/puma.pid"
+
+
+status() {
+    echo "Reporting status of the Puma HTTP server."
+    pumactl -p "$PUMA_PID_FILE" status
+}
+
+start() {
+    echo "Starting the Puma HTTP server."
+    puma -d --dir "$PUMA_WORK_DIR" --pidfile "$PUMA_PID_FILE"
+}
+
+stop() {
+    echo "Stopping the Puma HTTP server."
+    pumactl -p "$PUMA_PID_FILE" stop
+}
+
+restart() {
+    echo "Restarting the Puma HTTP server."
+    pumactl -p "$PUMA_PID_FILE" restart
+}
+
+case $1 in
+  status|start|stop|restart) "$1" ;;
+esac

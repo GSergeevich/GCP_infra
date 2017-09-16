@@ -1,0 +1,13 @@
+[Unit]
+Description=Puma (Ruby HTTP server)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/puma-init start
+ExecStop=/usr/bin/puma-init stop
+ExecStatus=/usr/bin/puma-init status
+ExecRestart=/usr/bin/puma-init restart
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
