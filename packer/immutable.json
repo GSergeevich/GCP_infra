@@ -1,0 +1,48 @@
+{
+"builders": [
+   {
+   "type": "googlecompute",
+   "project_id": "dogwood-abbey-179713",
+   "image_name": "reddit-immutable-{{timestamp}}",
+   "source_image": "ubuntu-1604-xenial-v20170815a",
+   "zone": "europe-west1-b",
+   "ssh_username": "appuser",
+   "machine_type": "f1-micro"
+   }
+
+],
+
+"provisioners": [
+   {
+   "type": "shell",
+   "script": "files/ruby_install.sh"
+   },
+   {
+   "type": "shell",
+   "script": "files/mongod_install.sh",
+   "execute_command": "sudo {{.Path}}"
+   },
+   {
+   "type": "shell",
+   "script": "files/deploy.sh"
+   },
+   {
+   "type": "file",
+   "source": "files/puma-init",
+   "destination": "/tmp/puma-init"
+   },
+   {
+   "type": "file",
+   "source": "files/puma.service",
+   "destination": "/tmp/puma.service"
+   },
+   {
+   "type": "shell",
+   "script": "files/unit_create.sh",
+   "execute_command": "sudo {{.Path}}"
+    }
+   
+   
+]
+
+}
