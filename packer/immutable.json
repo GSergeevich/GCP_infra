@@ -4,7 +4,8 @@
    "type": "googlecompute",
    "project_id": "dogwood-abbey-179713",
    "image_name": "reddit-immutable-{{timestamp}}",
-   "source_image": "ubuntu-1604-xenial-v20170815a",
+   "image_family": "reddit-app-full",
+   "source_image_family": "ubuntu-1604-lts",
    "zone": "europe-west1-b",
    "ssh_username": "appuser",
    "machine_type": "f1-micro"
