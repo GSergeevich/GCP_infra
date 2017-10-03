@@ -9,4 +9,9 @@ To create instance image with installed MongoDB and Ruby,run:
 
 packer build -var "project_id=%your_project_here%" -var "source_image=%your_source_image_here%" packer/ubuntu16.json 
 
+Заметки по использованию terraform
 
+В main.tf описана либо напрямую конфигурация инфраструктуры,либо пути к модулям.Обязательным является описание провайдера.
+В outputs.tf описаны переменные,которые будут получены из созданной в результате работы terraform инфраструктуры (ip адреса,etc).
+В terraform.tfstate хранится текущая конфигурация инфраструктуры,исходя из которой при terraform plan вычисляются необходимые действия для приведения состояния в целевое.
+В variables.tf описаны переменные,которые используются в описаниях инфраструктуры,в terraform.tfvars находятся эти значения переменных.
