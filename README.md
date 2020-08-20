@@ -31,6 +31,5 @@ packer build -var "project_id=%your_project_here%" -var "source_image=%your_sour
 7. Проверка : ./gce.py --list 
 8. Получение информации об инстансах: ansible all -m setup 
 
-TEST
 		
 		
